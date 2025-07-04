@@ -21,7 +21,9 @@ export default function Login() {
       toast.success('Başarıyla giriş yapıldı');
       navigate('/dashboard');
     } catch (error) {
-      toast.error('Giriş yapılırken hata oluştu');
+      console.error('Login error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Giriş yapılırken hata oluştu';
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
